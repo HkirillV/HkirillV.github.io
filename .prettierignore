@@ -1,0 +1,8 @@
+dist
+.ssr
+coverage
+playwright-report
+test-results
+e2e/**/*-snapshots
+public/fonts
+previews

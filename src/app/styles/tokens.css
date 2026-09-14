@@ -1,0 +1,120 @@
+:root {
+  --fontSans: 'Onest Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fontMono: 'JetBrains Mono', ui-monospace, 'SF Mono', menlo, monospace;
+
+  --textDisplay: clamp(32px, calc(32.31px + 1.0256vw), 52px);
+  --textXl: clamp(28px, calc(24.31px + 1.0256vw), 44px);
+  --textLg: clamp(24px, calc(22.15px + 0.5128vw), 32px);
+  --textMd: clamp(21px, calc(20.62px + 0.3846vw), 28px);
+  --textSm: 20px;
+  --textBody: 16px;
+  --textCaption: 15px;
+  --textLabel: 12px;
+  --textMicro: 11px;
+
+  --weightLight: 300;
+  --weightMedium: 500;
+
+  --leadingDisplay: 1.2;
+  --leadingSnug: 1.35;
+  --leadingBody: 1.5;
+
+  --trackingDisplay: -0.015em;
+  --trackingLabel: 0.06em;
+  --trackingEyebrow: 0.18em;
+
+  --space1: 4px;
+  --space2: 8px;
+  --space3: 12px;
+  --space4: 16px;
+  --space5: 24px;
+  --space6: 32px;
+  --space7: 44px;
+  --space8: 64px;
+  --space9: 96px;
+
+  --radiusSm: 10px;
+  --radiusMd: 14px;
+  --radiusLg: 16px;
+  --radiusPill: 999px;
+
+  --containerWidth: 1250px;
+  --containerPadding: 15px;
+  --sizeControl: 44px;
+
+  --headerRowHeight: 64px;
+  --headerRowHeightStuck: 52px;
+  --headerPaddingY: 24px;
+  --headerPaddingYStuck: 10px;
+  --headerHeight: calc(var(--headerRowHeight) + var(--headerPaddingY) * 2);
+
+  --logoSize: 56px;
+  --logoSizeStuck: 40px;
+
+  --switcherWidth: 72px;
+  --switcherHeight: 36px;
+  --switcherWidthStuck: 60px;
+  --switcherHeightStuck: 30px;
+
+  --easeOut: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --durationQuick: 0.12s;
+  --durationSwitch: 0.2s;
+  --durationFast: 0.25s;
+  --durationMenu: 0.45s;
+
+  --durationHover: 0.3s;
+  --durationBase: 0.4s;
+  --durationSlow: 0.75s;
+}
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --colorBg: #141319;
+  --colorCard: #1b1a22;
+  --colorCardMuted: #201f29;
+  --colorInk: #ececec;
+  --colorInkMuted: #9593a6;
+  --colorLine: rgb(255 255 255 / 9%);
+  --colorAccent: #8b7cff;
+  --colorAccentAlt: #4ed8de;
+  --colorOnAccent: #0e0d12;
+
+  --shadowHeader: 0 4px 14px rgb(0 0 0 / 26%);
+
+  --colorSwitcherTrack: #191820;
+  --colorSwitcherThumb: #fff;
+  --shadowSwitcher: -4px -4px 12px rgb(255 255 255 / 5%), 4px 4px 12px rgb(0 0 0 / 100%);
+  --shadowControl: 0 6px 16px rgb(0 0 0 / 34%);
+  --shadowControlHover: 0 8px 20px rgb(0 0 0 / 44%);
+  --shadowCard: 0 1px 0 rgb(255 255 255 / 5%) inset, 0 10px 22px rgb(0 0 0 / 42%);
+  --shadowCardHover: 0 1px 0 rgb(255 255 255 / 7%) inset, 0 16px 30px rgb(0 0 0 / 55%);
+
+  --glow: radial-gradient(62% 58% at 50% 45%, rgb(139 124 255 / 32%), transparent 72%);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --colorBg: #f1f1f6;
+  --colorCard: #fbfbfe;
+  --colorCardMuted: #f5f5fa;
+  --colorInk: #171620;
+  --colorInkMuted: #5f5d70;
+  --colorLine: rgb(23 22 32 / 10%);
+  --colorAccent: #6a57e8;
+  --colorAccentAlt: #128f98;
+  --colorOnAccent: #fff;
+
+  --shadowHeader: 0 4px 14px rgb(31 29 56 / 6%);
+  --colorSwitcherTrack: #ececec;
+  --colorSwitcherThumb: #191820;
+  --shadowSwitcher: -8px -8px 12px rgb(255 255 255 / 80%), 8px 8px 12px rgb(0 0 0 / 5%);
+  --shadowControl: 0 6px 16px rgb(31 29 56 / 10%);
+  --shadowControlHover: 0 8px 20px rgb(31 29 56 / 14%);
+  --shadowCard: 0 1px 0 rgb(255 255 255 / 90%) inset, 0 8px 18px rgb(31 29 56 / 8%);
+  --shadowCardHover: 0 1px 0 rgb(255 255 255 / 90%) inset, 0 14px 28px rgb(31 29 56 / 13%);
+  --glow: radial-gradient(62% 58% at 50% 45%, rgb(106 87 232 / 20%), transparent 72%);
+}

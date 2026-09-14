@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kirill Khlebov — Frontend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@300;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <style>
+      :root {
+        --bg: #141319;
+        --card: #1b1a22;
+        --ink: #ececec;
+        --inkMuted: #9593a6;
+        --line: rgb(255 255 255 / 9%);
+        --accent: #8b7cff;
+        --accentAlt: #4ed8de;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+      }
+      body {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 72px 80px;
+        overflow: hidden;
+        color: var(--ink);
+        font-weight: 300;
+        font-family: 'Onest', system-ui, sans-serif;
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        position: absolute;
+        top: -40%;
+        right: -10%;
+        width: 900px;
+        height: 900px;
+        background: radial-gradient(circle, rgb(139 124 255 / 26%), transparent 62%);
+        content: '';
+      }
+      .top,
+      .bottom,
+      .main {
+        position: relative;
+      }
+      .eyebrow {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        color: var(--accent);
+        font-weight: 500;
+        font-size: 20px;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        width: 40px;
+        height: 1px;
+        background: currentcolor;
+        content: '';
+      }
+      .name {
+        margin-top: 34px;
+        font-weight: 300;
+        font-size: 96px;
+        line-height: 1.06;
+        letter-spacing: -0.02em;
+      }
+      .name b {
+        color: var(--accent);
+        font-weight: 300;
+      }
+      .summary {
+        max-width: 720px;
+        margin-top: 26px;
+        color: var(--inkMuted);
+        font-size: 28px;
+        line-height: 1.45;
+      }
+      .bottom {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .stack {
+        display: flex;
+        gap: 12px;
+      }
+      .chip {
+        padding: 10px 20px;
+        color: var(--ink);
+        font-weight: 500;
+        font-size: 20px;
+        font-family: 'JetBrains Mono', monospace;
+        background: var(--card);
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+      }
+      .site {
+        color: var(--accentAlt);
+        font-size: 24px;
+        font-family: 'JetBrains Mono', monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <p class="eyebrow">Frontend Developer</p>
+      <h1 class="name">Kirill <b>Khlebov</b></h1>
+      <p class="summary">
+        I build the interface layer of AI products — streaming answers, long-running jobs and the
+        tooling teams use to evaluate them.
+      </p>
+    </div>
+
+    <div class="bottom">
+      <div class="stack">
+        <span class="chip">TypeScript</span>
+        <span class="chip">React</span>
+        <span class="chip">Next.js</span>
+        <span class="chip">Vite</span>
+      </div>
+      <span class="site">kirillkhlebov.ru</span>
+    </div>
+  </body>
+</html>

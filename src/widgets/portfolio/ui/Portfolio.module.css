@@ -1,0 +1,25 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space5);
+}
+
+.item {
+  display: flex;
+}
+
+.item > * {
+  width: 100%;
+}
+
+@media (--to-xl) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (--to-sm) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

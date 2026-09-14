@@ -1,0 +1,43 @@
+.skill {
+  position: relative;
+  z-index: 0;
+  padding: 14px 18px;
+  font-size: var(--textBody);
+  background-color: var(--colorCard);
+  border: 1px solid var(--colorLine);
+  border-radius: var(--radiusMd);
+  box-shadow: var(--shadowCard);
+  transition:
+    border-color var(--durationHover) ease-in-out,
+    color var(--durationHover) ease-in-out;
+}
+
+.soft {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  color: var(--colorInkMuted);
+}
+
+.soft::before {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin-top: 8px;
+  background-color: var(--colorAccent);
+  border-radius: 2px;
+  rotate: 45deg;
+  content: '';
+}
+
+@media (hover: hover) {
+  .skill:hover {
+    z-index: 1;
+    color: var(--colorAccent);
+    border-color: color-mix(in srgb, var(--colorAccent) 45%, var(--colorLine));
+  }
+
+  .soft:hover {
+    color: var(--colorInk);
+  }
+}

@@ -1,0 +1,64 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  gap: var(--space3);
+  align-items: center;
+  justify-content: center;
+  height: var(--sizeControl);
+  padding-inline: 28px;
+  overflow: hidden;
+  color: var(--colorInk);
+  font-weight: var(--weightMedium);
+  font-size: var(--textBody);
+  text-decoration: none;
+  background-color: var(--colorCard);
+  border: 1px solid var(--colorLine);
+  border-radius: var(--radiusLg);
+  box-shadow: var(--shadowControl);
+  transition:
+    border-color var(--durationFast) ease,
+    box-shadow var(--durationFast) ease;
+}
+
+.button::after {
+  position: absolute;
+  top: var(--rippleY, 50%);
+  left: var(--rippleX, 50%);
+  width: 0.5px;
+  height: 0.5px;
+  background-color: var(--colorAccent);
+  border-radius: 50%;
+  opacity: 0;
+  content: '';
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    border-color: var(--colorAccent);
+    box-shadow: var(--shadowControlHover);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ripple::after {
+    animation: ripple 0.8s ease-in;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  75% {
+    opacity: 0.7;
+    transform: scale(450);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(620);
+  }
+}

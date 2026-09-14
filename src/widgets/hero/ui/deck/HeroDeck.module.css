@@ -1,0 +1,557 @@
+.field {
+  --deckCycle: 7s;
+  --deckSalmon: rgb(242 167 140 / 82%);
+  --deckWire: #b086cc;
+  --deckKey: #6a3689;
+  --deckBand: #3d0f9e;
+  --deckBandAlpha: 0.36;
+  --deckKeyLit: #d8b4ff;
+
+  position: relative;
+  aspect-ratio: 1 / 0.86;
+}
+
+:root[data-theme='light'] .field {
+  --deckBand: var(--colorAccent);
+  --deckBandAlpha: 0.14;
+}
+
+.scene {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.bandRight {
+  fill: url('#heroDeckBandRight');
+}
+
+.bandLeft {
+  fill: url('#heroDeckBandLeft');
+}
+
+.bandStop {
+  stop-color: var(--deckBand);
+  stop-opacity: var(--deckBandAlpha);
+}
+
+.bandDrop {
+  stop-color: var(--deckBand);
+  stop-opacity: calc(var(--deckBandAlpha) * 0.5);
+}
+
+.bandFade {
+  stop-color: var(--deckBand);
+  stop-opacity: 0;
+}
+
+.mark {
+  fill: color-mix(in srgb, var(--colorAccent) 34%, transparent);
+  font-family: var(--fontSans);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.icon {
+  fill: none;
+  stroke: color-mix(in srgb, var(--colorAccent) 52%, transparent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.floor {
+  transform-origin: center;
+}
+
+.deck {
+  fill: url('#heroDeckBase');
+  stroke: #2c1458;
+  stroke-width: 5;
+  opacity: 0.95;
+}
+
+.deckCast {
+  fill: #10054d;
+}
+
+.deckPlate {
+  fill: #b592d9;
+}
+
+.keyboardGroup {
+  opacity: 0.77;
+}
+
+.keyboard {
+  fill: #3d065f;
+}
+
+.keyCast {
+  fill: #8a58a5;
+}
+
+.lidShade {
+  fill: url('#heroDeckLidShade');
+}
+
+.notchTop {
+  fill: #140a2c;
+}
+
+.lens {
+  fill: #2f2352;
+}
+
+.lensGlint {
+  fill: rgb(190 210 255 / 55%);
+}
+
+.hinge {
+  fill: url('#heroDeckHinge');
+}
+
+.hingeLit {
+  fill: rgb(178 145 255 / 26%);
+}
+
+.key {
+  fill: var(--deckKey);
+  cursor: pointer;
+}
+
+.lid {
+  fill: url('#heroDeckLid');
+  opacity: 0.94;
+}
+
+.screen {
+  fill: url('#heroDeckScreen');
+  stroke: #4b1487;
+  stroke-width: 2;
+  opacity: 0.82;
+}
+
+.shine {
+  transform-origin: center;
+}
+
+.bits {
+  fill: #86e8dd;
+  font-family: var(--fontMono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.flowBlock {
+  fill: var(--deckSalmon);
+}
+
+.flowLine {
+  fill: var(--deckWire);
+}
+
+.flowArrow {
+  fill: none;
+  stroke: var(--deckWire);
+  stroke-width: 2.2;
+}
+
+.arrowHead {
+  fill: var(--deckWire);
+}
+
+.rhombusLabel {
+  fill: #fff0e8;
+  font-family: var(--fontMono);
+  font-size: 15px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.glass {
+  fill: url('#heroDeckGlass');
+  stroke: rgb(255 255 255 / 18%);
+  stroke-width: 1;
+}
+
+.bar {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+.warm {
+  fill: #f5d97b;
+}
+
+.cool {
+  fill: #7fd8e8;
+}
+
+.pink {
+  fill: #e879f9;
+}
+
+.ink {
+  fill: rgb(255 255 255 / 55%);
+}
+
+.rail {
+  fill: url('#heroDeckGlass');
+  stroke: rgb(255 255 255 / 16%);
+  stroke-width: 1;
+}
+
+.railCast {
+  fill: rgb(43 15 145 / 64%);
+}
+
+.strip {
+  transition: transform 0.46s var(--easeOut);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strip {
+    transition: none;
+  }
+}
+
+.notch {
+  fill: #23114a;
+}
+
+.pad {
+  fill: rgb(255 255 255 / 5%);
+  stroke: rgb(255 255 255 / 7%);
+  stroke-width: 1;
+}
+
+.railButton {
+  cursor: pointer;
+}
+
+.railHit {
+  fill: transparent;
+}
+
+.railArrow {
+  pointer-events: none;
+  fill: rgb(255 255 255 / 62%);
+  transition: fill 0.2s ease;
+}
+
+.railButton:hover .railArrow {
+  fill: #fff;
+}
+
+.chipDisc {
+  fill: rgb(255 255 255 / 10%);
+  stroke: rgb(255 255 255 / 16%);
+  stroke-width: 1;
+}
+
+.markReact {
+  fill: none;
+  stroke: #61dafb;
+  stroke-width: 1.4;
+}
+
+.markReact circle {
+  fill: #61dafb;
+  stroke: none;
+}
+
+.markLine {
+  fill: none;
+  stroke: #8ed1fc;
+  stroke-width: 1.4;
+}
+
+.markVite {
+  fill: #f0c040;
+}
+
+.markLabel {
+  fill: #fff;
+  font-family: var(--fontMono);
+  font-size: 9px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.markLabelDark {
+  fill: #2a1245;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bandRight {
+    animation: deck-sweep-right 6s linear infinite;
+  }
+
+  .bandLeft {
+    animation: deck-sweep-left 6s linear infinite;
+  }
+
+  [data-in] .sign {
+    animation: deck-enter 1.5s var(--easeOut) backwards;
+    animation-delay: calc(var(--step) * 0.07s);
+  }
+
+  .signIdle {
+    animation: deck-sign 17s ease-in-out infinite;
+    animation-delay: calc(var(--step) * -1.7s);
+  }
+
+  .floor,
+  .shine {
+    animation: deck-breathe 5s ease-in-out infinite;
+  }
+
+  .key {
+    animation: deck-press 9s ease-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .flowBlock,
+  .flowLine,
+  .flowArrow {
+    animation: deck-wake var(--deckCycle) ease-out infinite backwards;
+    animation-delay: calc(var(--step) * 0.55s);
+  }
+
+  .bits {
+    animation: deck-bits 3.2s steps(1) infinite;
+    animation-delay: calc(var(--step) * -0.45s);
+  }
+
+  .bar {
+    animation: deck-type var(--deckCycle) ease-out infinite backwards;
+    animation-delay: calc(0.4s + var(--step) * 0.14s);
+  }
+
+  .drift {
+    animation: deck-drift 8s ease-in-out infinite;
+  }
+
+  .driftSlow {
+    animation: deck-drift 10.5s ease-in-out infinite reverse;
+  }
+
+  @keyframes deck-sweep-right {
+    0% {
+      opacity: 0;
+      transform: translateX(calc(var(--slide) * -1));
+    }
+
+    22% {
+      opacity: 0.62;
+      transform: translateX(calc(var(--slide) * -0.56));
+    }
+
+    48% {
+      opacity: 1;
+      transform: translateX(calc(var(--slide) * -0.04));
+    }
+
+    70% {
+      opacity: 0.44;
+      transform: translateX(calc(var(--slide) * 0.4));
+    }
+
+    86% {
+      opacity: 0.13;
+      transform: translateX(calc(var(--slide) * 0.72));
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(var(--slide));
+    }
+  }
+
+  @keyframes deck-sweep-left {
+    0% {
+      opacity: 0;
+      transform: translateX(var(--slide));
+    }
+
+    22% {
+      opacity: 0.62;
+      transform: translateX(calc(var(--slide) * 0.56));
+    }
+
+    48% {
+      opacity: 1;
+      transform: translateX(calc(var(--slide) * 0.04));
+    }
+
+    70% {
+      opacity: 0.44;
+      transform: translateX(calc(var(--slide) * -0.4));
+    }
+
+    86% {
+      opacity: 0.13;
+      transform: translateX(calc(var(--slide) * -0.72));
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(calc(var(--slide) * -1));
+    }
+  }
+
+  @keyframes deck-enter {
+    0% {
+      opacity: 0;
+      transform: translate(var(--dx, 0), var(--dy, 0));
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes deck-sign {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes deck-breathe {
+    0%,
+    100% {
+      opacity: 0.78;
+    }
+
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes deck-press {
+    0%,
+    100% {
+      fill: var(--deckKey);
+    }
+
+    1% {
+      fill: var(--deckKeyLit);
+    }
+
+    7% {
+      fill: var(--deckKey);
+    }
+  }
+
+  @keyframes deck-wake {
+    0% {
+      opacity: 0.3;
+    }
+
+    6% {
+      opacity: 1;
+    }
+
+    48% {
+      opacity: 1;
+    }
+
+    72%,
+    100% {
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes deck-bits {
+    0%,
+    100% {
+      opacity: 0.32;
+    }
+
+    25% {
+      opacity: 0.78;
+    }
+
+    50% {
+      opacity: 0.48;
+    }
+
+    75% {
+      opacity: 0.92;
+    }
+  }
+
+  @keyframes deck-type {
+    0% {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    4% {
+      opacity: 1;
+    }
+
+    14% {
+      transform: scaleX(1);
+    }
+
+    84% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    94%,
+    100% {
+      opacity: 0;
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes deck-drift {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+
+  .hit {
+    animation: deck-hit 0.46s ease-out;
+  }
+
+  @keyframes deck-hit {
+    0% {
+      fill: #fff;
+    }
+
+    22% {
+      fill: var(--deckKeyLit);
+    }
+
+    100% {
+      fill: var(--deckKey);
+    }
+  }
+}
+
+@media (--to-xl) {
+  .field {
+    width: 100%;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}

@@ -1,0 +1,65 @@
+.switcher {
+  position: relative;
+  flex: none;
+  width: var(--switcherWidth);
+  height: var(--switcherHeight);
+  background-color: var(--colorSwitcherTrack);
+  border: 0;
+  border-radius: var(--radiusPill);
+  box-shadow:
+    0 0 0 1px transparent,
+    var(--shadowSwitcher);
+  transition:
+    width var(--durationFast) ease,
+    height var(--durationFast) ease,
+    box-shadow var(--durationSwitch) ease;
+}
+
+@media (hover: hover) {
+  .switcher:hover {
+    box-shadow:
+      0 0 0 1px var(--colorAccent),
+      var(--shadowSwitcher);
+  }
+}
+
+.thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc(var(--switcherHeight) - 6px);
+  height: calc(var(--switcherHeight) - 6px);
+  background-color: var(--colorSwitcherThumb);
+  border-radius: 50%;
+  transition:
+    width var(--durationFast) ease,
+    height var(--durationFast) ease,
+    transform var(--durationSwitch) ease;
+}
+
+.thumbLight {
+  transform: translateX(calc(var(--switcherWidth) - var(--switcherHeight)));
+}
+
+.switcher svg {
+  position: absolute;
+  top: calc((var(--switcherHeight) - 16px) / 2);
+  width: 16px;
+  height: 16px;
+  color: var(--colorInk);
+  transition:
+    top var(--durationFast) ease,
+    color var(--durationSwitch) ease;
+}
+
+.moon {
+  left: calc((var(--switcherHeight) - 16px) / 2);
+}
+
+.sun {
+  right: calc((var(--switcherHeight) - 16px) / 2);
+}
+
+.switcher .iconOnThumb {
+  color: var(--colorSwitcherTrack);
+}

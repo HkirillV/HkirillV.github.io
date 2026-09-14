@@ -1,0 +1,39 @@
+.nav {
+  display: flex;
+  align-self: stretch;
+}
+
+.list {
+  display: flex;
+}
+
+.list > li {
+  display: flex;
+}
+
+.list > li:not(:last-child) {
+  margin-right: 40px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  color: var(--colorInk);
+  font-weight: var(--weightLight);
+  font-size: var(--textBody);
+  text-decoration: none;
+  transition: color var(--durationFast) ease;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    color: var(--colorAccent);
+  }
+}
+
+@media (--to-xl) {
+  .nav {
+    display: none;
+  }
+}

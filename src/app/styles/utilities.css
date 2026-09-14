@@ -1,0 +1,30 @@
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip-path: inset(50%);
+}
+
+.reveal {
+  transition:
+    opacity var(--durationSlow) var(--easeOut),
+    transform var(--durationSlow) var(--easeOut);
+  transition-delay: var(--revealDelay, 0s);
+}
+
+html.js .reveal:not(.revealVisible) {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal:not(.revealVisible) {
+    opacity: 1;
+    transform: none;
+  }
+}

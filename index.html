@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="{{siteLocale}}" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{siteTitle}}</title>
+    <meta name="description" content="{{siteDescription}}" />
+    <link rel="canonical" href="{{siteHome}}" />
+    <meta name="theme-color" content="{{colorBgDark}}" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="{{colorBgLight}}" media="(prefers-color-scheme: light)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{siteHome}}" />
+    <meta property="og:title" content="{{siteTitle}}" />
+    <meta property="og:description" content="{{siteSocialDescription}}" />
+    <meta property="og:image" content="{{siteOgImage}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="preload"
+      href="/fonts/onest-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
+
+    <script>
+      try {
+        var stored = localStorage.getItem('kh-theme')
+        var theme =
+          stored ?? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+        document.documentElement.dataset.theme = theme
+        document.documentElement.classList.add('js')
+      } catch (e) {
+        document.documentElement.classList.add('js')
+      }
+    </script>
+
+    <style>
+      .preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background-color: {{colorBgDark}};
+      }
+      :root[data-theme='light'] .preloader {
+        background-color: {{colorBgLight}};
+      }
+      .preloader i {
+        display: block;
+        background-color: {{colorAccentDark}};
+        transform: translateY(100%);
+        transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+        transition-delay: var(--d);
+      }
+      :root[data-theme='light'] .preloader i {
+        background-color: {{colorAccentLight}};
+      }
+      .preloader i:nth-child(1) {
+        --d: 0.05s;
+      }
+      .preloader i:nth-child(2) {
+        --d: 0.14s;
+      }
+      .preloader i:nth-child(3) {
+        --d: 0.23s;
+      }
+      :root.is-loaded .preloader i {
+        transform: translateY(-100%);
+      }
+      :root.is-loaded .preloader {
+        visibility: hidden;
+        pointer-events: none;
+        transition: visibility 0s 1.05s;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .preloader {
+          display: none;
+        }
+      }
+    </style>
+    <noscript>
+      <style>
+        .preloader {
+          display: none;
+        }
+      </style>
+    </noscript>
+    <!--app-head-->
+  </head>
+  <body>
+    <div class="preloader" id="preloader" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div id="root"><!--app-html--></div>
+
+    <script>
+      ;(function () {
+        var MIN_VISIBLE = 380
+        var MAX_WAIT = 1800
+        var SWEEP = 1100
+
+        var root = document.documentElement
+        var openedAt = Date.now()
+        var done = false
+
+        function reveal() {
+          if (done) return
+          done = true
+
+          setTimeout(
+            function () {
+              root.classList.add('is-loaded')
+              setTimeout(function () {
+                var node = document.getElementById('preloader')
+                if (node) node.remove()
+              }, SWEEP)
+            },
+            Math.max(0, MIN_VISIBLE - (Date.now() - openedAt)),
+          )
+        }
+
+        if (document.readyState === 'complete') reveal()
+        else addEventListener('load', reveal)
+
+        setTimeout(reveal, MAX_WAIT)
+      })()
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

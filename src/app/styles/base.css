@@ -1,0 +1,28 @@
+body {
+  min-height: 100svh;
+  margin: 0;
+  overflow-x: clip;
+  color: var(--colorInk);
+  font-family: var(--fontSans);
+  font-weight: var(--weightLight);
+  font-size: var(--textBody);
+  line-height: var(--leadingBody);
+  font-synthesis-weight: none;
+  background-color: var(--colorBg);
+  -webkit-font-smoothing: antialiased;
+}
+
+:root[data-theme-switching] *:not([data-theme-transition]) {
+  transition: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--colorAccent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  color: var(--colorOnAccent);
+  background-color: var(--colorAccent);
+}

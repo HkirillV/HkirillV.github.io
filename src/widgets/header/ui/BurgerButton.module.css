@@ -1,0 +1,59 @@
+.burger {
+  display: none;
+  place-items: center;
+  width: var(--sizeControl);
+  height: var(--sizeControl);
+  background-color: var(--colorCard);
+  border: 1px solid var(--colorLine);
+  border-radius: 12px;
+}
+
+.line,
+.line::before,
+.line::after {
+  width: 18px;
+  height: 2px;
+  background-color: var(--colorInk);
+  border-radius: 2px;
+  transition:
+    transform var(--durationFast) ease,
+    background-color var(--durationFast) ease;
+}
+
+.line {
+  position: relative;
+  display: block;
+}
+
+.line::before,
+.line::after {
+  position: absolute;
+  left: 0;
+  content: '';
+}
+
+.line::before {
+  top: -6px;
+}
+
+.line::after {
+  top: 6px;
+}
+
+.open .line {
+  background-color: transparent;
+}
+
+.open .line::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.open .line::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (--to-xl) {
+  .burger {
+    display: grid;
+  }
+}

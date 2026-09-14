@@ -1,0 +1,102 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  animation: fade-in var(--durationFast) ease-out;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(10 9 14 / 78%);
+  cursor: default;
+}
+
+.toolbar {
+  position: absolute;
+  top: var(--space5);
+  right: var(--space5);
+  z-index: 1;
+  display: flex;
+  gap: var(--space3);
+}
+
+.toolbarButton {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: #fff;
+  background-color: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: var(--radiusPill);
+  transition:
+    background-color var(--durationHover) ease-in-out,
+    border-color var(--durationHover) ease-in-out;
+}
+
+.toolbarButton svg {
+  width: 19px;
+  height: 19px;
+}
+
+@media (hover: hover) {
+  .toolbarButton:hover {
+    background-color: rgb(255 255 255 / 18%);
+    border-color: rgb(255 255 255 / 30%);
+  }
+}
+
+.frame {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 90vw;
+  max-height: 85vh;
+  overflow: hidden;
+  background-color: var(--colorCard);
+  border-radius: var(--radiusLg);
+  box-shadow: var(--shadowCardHover);
+}
+
+.image {
+  display: block;
+  flex: none;
+  max-width: 90vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+}
+
+.zoomed {
+  width: min(1100px, 90vw);
+  height: min(720px, 85vh);
+  overflow: auto;
+  cursor: default;
+}
+
+.zoomed .image {
+  width: auto;
+  max-width: none;
+  height: auto;
+  max-height: none;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    animation: none;
+  }
+}

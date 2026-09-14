@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space7);
+}
+
+.title {
+  margin-bottom: var(--space5);
+  font-weight: var(--weightLight);
+  font-size: var(--textLg);
+  line-height: var(--leadingDisplay);
+  letter-spacing: var(--trackingDisplay);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space3);
+}
+
+.listSoft {
+  display: grid;
+  gap: var(--space3);
+}
+
+@media (--to-lg) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space6);
+  }
+}

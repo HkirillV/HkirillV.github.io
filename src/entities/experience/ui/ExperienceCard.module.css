@@ -1,0 +1,55 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  height: 100%;
+  padding: var(--space5);
+  border: none;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space3) var(--space4);
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.date {
+  flex: none;
+  color: var(--colorInkMuted);
+  font-size: var(--textLabel);
+  font-family: var(--fontMono);
+  letter-spacing: var(--trackingLabel);
+  text-transform: uppercase;
+}
+
+.title {
+  font-weight: var(--weightLight);
+  font-size: var(--textMd);
+  line-height: var(--leadingDisplay);
+  letter-spacing: var(--trackingDisplay);
+}
+
+.link {
+  text-decoration: none;
+  transition: color var(--durationHover) ease-in-out;
+}
+
+.position {
+  color: var(--colorAccent);
+  font-weight: var(--weightMedium);
+  font-size: var(--textBody);
+}
+
+.summary {
+  flex: 1;
+  color: var(--colorInkMuted);
+  font-size: var(--textCaption);
+}
+
+@media (hover: hover) {
+  .link:hover {
+    color: var(--colorAccent);
+  }
+}

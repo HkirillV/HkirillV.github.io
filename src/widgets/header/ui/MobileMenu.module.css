@@ -1,0 +1,44 @@
+.menu {
+  position: absolute;
+  inset: 100% 0 auto;
+  z-index: 55;
+  display: none;
+  visibility: hidden;
+  background-color: var(--colorBg);
+  border-bottom: 1px solid var(--colorLine);
+  transform: translateY(-102%);
+  transition:
+    transform var(--durationMenu) var(--easeOut),
+    visibility 0s var(--durationMenu);
+  pointer-events: none;
+}
+
+.open {
+  visibility: visible;
+  transform: none;
+  transition:
+    transform var(--durationMenu) var(--easeOut),
+    visibility 0s;
+  pointer-events: auto;
+}
+
+.list {
+  display: grid;
+  gap: 2px;
+  padding-block: var(--space3) var(--space5);
+}
+
+.link {
+  display: block;
+  padding: 14px 4px;
+  font-weight: var(--weightMedium);
+  font-size: var(--textSm);
+  text-decoration: none;
+  border-bottom: 1px solid var(--colorLine);
+}
+
+@media (--to-xl) {
+  .menu {
+    display: block;
+  }
+}

@@ -1,0 +1,22 @@
+.card {
+  position: relative;
+  z-index: 0;
+  background-color: var(--colorCard);
+  border: 1px solid var(--colorLine);
+  border-radius: var(--radiusLg);
+  box-shadow: var(--shadowCard);
+}
+
+.hoverable {
+  transition:
+    box-shadow var(--durationHover) ease-in-out,
+    border-color var(--durationHover) ease-in-out;
+}
+
+@media (hover: hover) {
+  .hoverable:hover {
+    z-index: 1;
+    border-color: color-mix(in srgb, var(--colorAccent) 40%, var(--colorLine));
+    box-shadow: var(--shadowCardHover);
+  }
+}
