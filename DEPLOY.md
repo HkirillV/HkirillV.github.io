@@ -5,7 +5,10 @@ HTML, бандлы, шрифты, картинки, `robots.txt` и `sitemap.xml
 ни Node, ни база — только раздача файлов. Поэтому подойдёт любой статический
 хостинг, и переезд с одного на другой стоит десять минут.
 
-Целевой домен — `kirillkhlebov.ru`.
+Целевой домен — `kirillkhlebov.ru`. Хостинг российский: аудитория сайта сидит у
+российских провайдеров, а Cloudflare из России последние годы то замедляют, то
+режут через ТСПУ. Для портфолио, которое будут открывать работодатели, это
+лишняя лотерея.
 
 ## Что уже сделано в коде
 
@@ -13,50 +16,94 @@ HTML, бандлы, шрифты, картинки, `robots.txt` и `sitemap.xml
   единственный источник правды: из него собираются `robots.txt`, `sitemap.xml`,
   canonical, og-теги и JSON-LD.
 - `previews/social/og.html` и перерисованная `public/og.png` — с новым доменом.
-- `.github/workflows/ci.yml` содержит job `deploy` на Cloudflare Pages. Он
-  выключен условием `vars.CLOUDFLARE_PROJECT_NAME != ''` и включится сам, как
-  только переменная появится.
-- `public/_headers` — иммутабельный кэш для `/assets/*` и `/fonts/*` плюс
-  security-заголовки. Формат понимают Cloudflare Pages и Netlify.
+- `public/.htaccess` — редирект на HTTPS, склейка `www` с голым доменом,
+  иммутабельный кэш для бандлов и шрифтов, security-заголовки. Это рабочий
+  конфиг для Timeweb, Beget и любого другого Apache-хостинга.
+- `public/_headers` — то же самое в формате Cloudflare Pages и Netlify. Лежит на
+  случай переезда, на Apache просто игнорируется.
+- `scripts/deploy.sh` — заливка `dist/` по rsync. Сначала печатает, что
+  изменится, потом льёт. С `--dry-run` только печатает.
+- `.github/workflows/ci.yml`, job `deploy` — то же самое из CI. Выключен
+  условием `vars.DEPLOY_HOST != ''` и включится сам, как только переменная
+  появится.
 
-## Шаг 1. Домен
+## Шаг 1. Домен и хостинг
 
-Регистраторы `.ru`: reg.ru, nic.ru, beget, timeweb. Физлицу понадобятся
-паспортные данные — это требование правил регистрации, а не прихоть
+Регистраторы `.ru`: timeweb, reg.ru, nic.ru, beget. Физлицу понадобятся
+паспортные данные — это требование правил регистрации домена, а не прихоть
 регистратора. Стоит несколько сотен рублей в год.
 
-Сначала проверь, свободен ли `kirillkhlebov.ru`. Если занят, разумные запасные:
-`khlebov.ru`, `kkhlebov.ru`, `kirill-khlebov.ru`. При смене домена правь одну
-строку и перерисовывай картинку:
+Удобнее брать домен и хостинг в одном кабинете: тогда не нужно возиться с
+делегированием, хостер сам пропишет свои NS и A-запись.
+
+`kirillkhlebov.ru` свободен — проверено у реестра:
+
+```bash
+whois -h whois.tcinet.ru kirillkhlebov.ru
+```
+
+Тариф берите самый младший. Сайт — полтора мегабайта статики, ему хватит
+минимума. Если домен уже занят, разумные запасные: `khlebov.ru`, `kkhlebov.ru`,
+`kirill-khlebov.ru`. При смене домена правьте одну строку и перерисовывайте
+картинку:
 
 ```bash
 # 1. поменять url в src/shared/config/site.ts
 # 2. поменять подпись в previews/social/og.html
+# 3. поменять домен в public/.htaccess
 npm run images:render -- og
 npm run build
 ```
 
-## Шаг 2. GitHub
+## Шаг 2. SSH-доступ
 
-Репозиторий уже инициализирован, всё лежит в одном коммите на ветке `main`.
-
-Проверь, что автор коммита — тот, кого ты хочешь видеть в истории:
+В панели хостинга включите SSH и добавьте публичный ключ для деплоя:
 
 ```bash
-git log -1 --format='%an <%ae>'
+cat ~/.ssh/kirillkhlebov_deploy.pub
 ```
 
-Сейчас там `Kirill Khlebov <khlebov79@gmail.com>`. Почта должна совпадать с той,
-что привязана к аккаунту GitHub, иначе коммиты не свяжутся с твоим профилем.
-Если не совпадает, поправь до пуша — коммит пока один, это безопасно:
+Приватная часть (`~/.ssh/kirillkhlebov_deploy`) нужна только двум сторонам:
+вашей машине и GitHub Actions. Ключ отдельный, не личный, — если он утечёт,
+отзывается он одной кнопкой в панели и никак не задевает остальное.
+
+Запомните путь к корню сайта. На Timeweb это обычно
+`/home/<логин>/kirillkhlebov.ru/public_html`, на Beget —
+`/home/<логин>/kirillkhlebov.ru/public_html` либо `~/kirillkhlebov.ru/docs`.
+Точный путь виден в панели в карточке сайта.
+
+## Шаг 3. Первая заливка руками
 
 ```bash
-git config user.email "почта-от-github@example.com"
-git commit --amend --reset-author --no-edit
+npm run build
+
+export DEPLOY_HOST=<хост из письма хостера>
+export DEPLOY_USER=<логин>
+export DEPLOY_PATH=/home/<логин>/kirillkhlebov.ru/public_html
+
+bash scripts/deploy.sh --dry-run   # посмотреть, что поедет
+bash scripts/deploy.sh             # залить
 ```
 
-Дальше создай на GitHub **пустой** репозиторий — без README, без `.gitignore`,
-без лицензии, иначе первый пуш упрётся в конфликт. И запушь:
+`--delete` в скрипте вычищает на сервере то, чего больше нет в `dist/`, — иначе
+старые хешированные бандлы копятся годами. Поэтому `DEPLOY_PATH` должен
+указывать строго на корень сайта: скрипт отказывается работать с `/` и `~`,
+но проверить путь глазами всё равно стоит.
+
+## Шаг 4. Сертификат
+
+В панели хостинга: SSL → Let's Encrypt → выпустить для `kirillkhlebov.ru` и
+`www.kirillkhlebov.ru`. Бесплатно, выпуск занимает минуты.
+
+Важно: выпускайте сертификат **до** того, как включите принудительный HTTPS в
+панели. Валидация Let's Encrypt ходит по HTTP на `/.well-known/acme-challenge`.
+В `public/.htaccess` этот путь из редиректа исключён, но у хостера может быть
+свой редирект уровнем выше, и тогда выпуск будет падать.
+
+## Шаг 5. Автодеплой из GitHub
+
+Создайте на GitHub **пустой** репозиторий — без README, без `.gitignore`, без
+лицензии, иначе первый пуш упрётся в конфликт. И запушьте:
 
 ```bash
 git remote add origin git@github.com:<логин>/<репозиторий>.git
@@ -64,34 +111,19 @@ git push -u origin main
 ```
 
 Перед пушем сработает хук `pre-push`: он прогонит `typecheck` и юнит-тесты.
-Это нормально, просто подожди полминуты.
+Это нормально, просто подождите полминуты.
 
-## Шаг 3. Cloudflare Pages
+Дальше в GitHub: **Settings → Secrets and variables → Actions**.
 
-Заведи аккаунт на cloudflare.com, затем **Workers & Pages → Create → Pages**.
+| Имя              | Вкладка   | Значение                                 |
+| ---------------- | --------- | ---------------------------------------- |
+| `DEPLOY_SSH_KEY` | Secrets   | содержимое `~/.ssh/kirillkhlebov_deploy` |
+| `DEPLOY_HOST`    | Variables | хост хостинга                            |
+| `DEPLOY_USER`    | Variables | логин SSH                                |
+| `DEPLOY_PATH`    | Variables | корень сайта                             |
+| `DEPLOY_PORT`    | Variables | только если порт не 22                   |
 
-Важно: выбирай **Direct Upload**, а не «Connect to Git». Сборкой занимается
-GitHub Actions, Cloudflare только принимает готовый `dist/`. Если подключить
-репозиторий напрямую, Cloudflare начнёт собирать сам, и это будет конфликтовать
-с job `deploy` в CI.
-
-Имя проекта запомни — оно понадобится в следующем шаге.
-
-Потом собери три значения:
-
-| Что                       | Где взять                                                                                        |
-| ------------------------- | ------------------------------------------------------------------------------------------------ |
-| `CLOUDFLARE_API_TOKEN`    | My Profile → API Tokens → Create Token → шаблон **Edit Cloudflare Workers** (он покрывает Pages) |
-| `CLOUDFLARE_ACCOUNT_ID`   | правая колонка дашборда аккаунта, либо в URL после `dash.cloudflare.com/`                        |
-| `CLOUDFLARE_PROJECT_NAME` | имя проекта Pages из предыдущего пункта                                                          |
-
-И положи их в GitHub: **Settings → Secrets and variables → Actions**.
-
-- вкладка **Secrets** → `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
-- вкладка **Variables** → `CLOUDFLARE_PROJECT_NAME`
-
-Токен и Account ID — секреты, имя проекта — переменная. Job в CI читает их
-именно так.
+Приватный ключ — секрет, остальное — переменные. Job читает их именно так.
 
 После этого любой пуш в `main` сам соберёт, прогонит тесты, проверит Lighthouse
 и задеплоит. Первый деплой можно запустить пустым коммитом:
@@ -101,57 +133,35 @@ git commit --allow-empty -m "chore: trigger the first deploy"
 git push
 ```
 
-## Шаг 4. Домен на Cloudflare
-
-1. В Cloudflare: **Add a site** → вводишь `kirillkhlebov.ru` → план Free.
-2. Cloudflare покажет два своих NS-сервера.
-3. У регистратора домена меняешь NS на эти два. Для `.ru` это штатная операция,
-   все регистраторы её поддерживают.
-4. Ждёшь делегирования — обычно пара часов, по регламенту до суток.
-5. Когда домен активен: **Workers & Pages → твой проект → Custom domains** →
-   добавляешь `kirillkhlebov.ru` и `www.kirillkhlebov.ru`.
-6. Сертификат выпустится сам, минут за десять.
-
-## Шаг 5. Проверка
+## Шаг 6. Проверка
 
 Обязательно — **с мобильного интернета российского оператора**, не с домашнего
-вайфая, и попроси пару знакомых открыть. Аудитория сайта на российских
-провайдерах, и проверять доступность нужно с их стороны.
+вайфая, и попросите пару знакомых открыть.
 
-Заодно посмотри:
+Заодно посмотрите:
 
 - `kirillkhlebov.ru/robots.txt` и `kirillkhlebov.ru/sitemap.xml` — должны
   отдаваться и содержать правильный домен;
-- превью ссылки — вставь адрес в телеграм или прогони через opengraph.xyz;
-- добавь сайт в Яндекс.Вебмастер и Google Search Console, скорми им sitemap.
+- `curl -I https://kirillkhlebov.ru/assets/` — на бандлах должен быть
+  `Cache-Control: immutable`. Если его нет, значит хостер не дал `mod_headers`,
+  и кэш надо включать в панели;
+- `http://kirillkhlebov.ru` и `https://www.kirillkhlebov.ru` — оба должны
+  редиректить на `https://kirillkhlebov.ru`;
+- превью ссылки — вставьте адрес в телеграм или прогоните через opengraph.xyz;
+- добавьте сайт в Яндекс.Вебмастер и Google Search Console, скормите им sitemap.
 
-## План Б: российский хостинг
+## План Б: Cloudflare Pages
 
-Если с Cloudflare из России будет туго — переезд дешёвый, потому что сайт
-статический. Кандидаты: Timeweb Cloud, Beget, Selectel, Yandex Cloud Object
-Storage.
+Если российский хостинг разочарует, переезд дешёвый, потому что сайт
+статический. `public/_headers` уже лежит в нужном формате, `.htaccess`
+Cloudflare просто проигнорирует.
 
-Порядок: собираешь `npm run build`, заливаешь содержимое `dist/` в корень сайта,
-переключаешь NS или A-запись на хостера.
-
-Одна ловушка: `public/_headers` понимают только Cloudflare Pages и Netlify. На
-обычном nginx эти правила нужно перенести в конфиг руками, иначе потеряется
-кэширование шрифтов и бандлов — а это заметно на повторных заходах. Минимум:
-
-```nginx
-location ~* ^/(assets|fonts)/ {
-  add_header Cache-Control "public, max-age=31536000, immutable";
-}
-
-location / {
-  add_header Cache-Control "public, max-age=0, must-revalidate";
-  add_header X-Content-Type-Options "nosniff";
-  add_header Referrer-Policy "strict-origin-when-cross-origin";
-  add_header Permissions-Policy "geolocation=(), microphone=(), camera=()";
-}
-```
+Порядок: **Workers & Pages → Create → Pages → Direct Upload**, затем job
+`deploy` в CI меняется на `cloudflare/wrangler-action@v3` с `CLOUDFLARE_API_TOKEN`,
+`CLOUDFLARE_ACCOUNT_ID` и `CLOUDFLARE_PROJECT_NAME`. Домен переезжает сменой NS
+на серверы Cloudflare — для `.ru` это штатная операция.
 
 ## Как обновлять сайт дальше
 
 `git push` в `main` — и всё. CI соберёт, проверит и выложит. Ничего руками
-делать не нужно.
+делать не нужно. Если CI недоступен — `npm run build && bash scripts/deploy.sh`.
