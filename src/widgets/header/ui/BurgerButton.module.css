@@ -8,48 +8,46 @@
   border-radius: 12px;
 }
 
-.line,
-.line::before,
-.line::after {
-  width: 18px;
-  height: 2px;
-  background-color: var(--colorAccent);
-  border-radius: 2px;
-  transition:
-    transform var(--durationMenu) var(--easeOut),
-    background-color var(--durationMenu) var(--easeOut);
+.icon {
+  width: 70%;
+  height: 70%;
 }
 
 .line {
-  position: relative;
-  display: block;
+  fill: none;
+  stroke: var(--colorAccent);
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition:
+    stroke-dasharray var(--durationBurger) var(--easeBurger),
+    stroke-dashoffset var(--durationBurger) var(--easeBurger);
 }
 
-.line::before,
-.line::after {
-  position: absolute;
-  left: 0;
-  content: '';
+.lineTop {
+  stroke-dasharray: 60 207;
 }
 
-.line::before {
-  top: -6px;
+.lineMiddle {
+  stroke-dasharray: 60 60;
 }
 
-.line::after {
-  top: 6px;
+.lineBottom {
+  stroke-dasharray: 60 207;
 }
 
-.open .line {
-  background-color: transparent;
+.open .lineTop {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
 }
 
-.open .line::before {
-  transform: translateY(6px) rotate(45deg);
+.open .lineMiddle {
+  stroke-dasharray: 1 60;
+  stroke-dashoffset: -30;
 }
 
-.open .line::after {
-  transform: translateY(-6px) rotate(-45deg);
+.open .lineBottom {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
 }
 
 @media (--to-xl) {
