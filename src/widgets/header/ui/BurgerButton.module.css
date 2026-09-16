@@ -4,7 +4,7 @@
   width: var(--sizeControl);
   height: var(--sizeControl);
   background-color: var(--colorCard);
-  border: 1px solid var(--colorLine);
+  border: 1px solid var(--colorAccent);
   border-radius: 12px;
 }
 
@@ -13,7 +13,7 @@
 .line::after {
   width: 18px;
   height: 2px;
-  background-color: var(--colorInk);
+  background-color: var(--colorAccent);
   border-radius: 2px;
   transition:
     transform var(--durationMenu) var(--easeOut),
