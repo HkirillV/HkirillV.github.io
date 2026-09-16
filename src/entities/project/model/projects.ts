@@ -14,7 +14,7 @@ export const PROJECTS: readonly Project[] = [
     id: 'service-hub',
     title: 'Service Hub',
     releasedAt: '2025-06',
-    description: 'Unified ticketing platform for support, field engineers and the call centre.',
+    description: 'Unified ticketing platform for support, field engineers and the call center.',
     url: 'https://beeline.ru',
     stack: ['ts', 'react', 'redux', 'query', 'sse'],
   },

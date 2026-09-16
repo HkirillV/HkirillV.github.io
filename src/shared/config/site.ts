@@ -2,13 +2,13 @@ export const SITE = {
   url: 'https://kirillkhlebov.ru',
   title: 'Kirill Khlebov — Frontend Developer',
   description:
-    'Kirill Khlebov, frontend developer at Sber AI Center. React, TypeScript and interfaces built around AI products.',
+    'Kirill Khlebov, frontend developer at Sber. React, TypeScript and interfaces built around AI products.',
   socialDescription:
-    'React, TypeScript and interfaces built around AI products. Frontend developer at Sber AI Center.',
+    'React, TypeScript and interfaces built around AI products. Frontend developer at Sber.',
   ogImage: '/og.png',
   locale: 'en',
   email: 'khlebov79@gmail.com',
-  availability: 'mon-fri from 8 am to 8 pm (gmt)',
+  availability: 'mon-fri from 8 am to 8 pm (msk)',
   copyrightYear: 2026,
 } as const
 

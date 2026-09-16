@@ -37,7 +37,7 @@ export const EXPERIENCE: readonly ExperienceEntry[] = [
   },
   {
     id: 'digital-studio',
-    company: 'Digital studio',
+    company: 'Digital Studio',
     companyUrl: 'https://github.com/khlebov',
     position: 'Frontend Developer',
     startedAt: '2020-11',

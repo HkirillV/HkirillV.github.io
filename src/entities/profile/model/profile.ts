@@ -20,7 +20,7 @@ export const PROFILE: Profile = {
   firstName: 'Kirill',
   lastName: 'Khlebov',
   role: 'Frontend Developer',
-  company: { name: 'Sber · AI Center', url: 'https://sber.ru' },
+  company: { name: 'Sber', url: 'https://sber.ru' },
   location: 'Moscow, Russia',
   summary:
     'I build the interface layer of AI products — streaming answers, long-running jobs and the tooling teams use to evaluate them.',
