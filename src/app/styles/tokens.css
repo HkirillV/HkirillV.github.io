@@ -45,7 +45,7 @@
   --headerRowHeight: 64px;
   --headerRowHeightStuck: 52px;
   --headerPaddingY: 24px;
-  --headerPaddingYStuck: 10px;
+  --headerPaddingYStuck: 12px;
   --headerHeight: calc(var(--headerRowHeight) + var(--headerPaddingY) * 2);
   --headerHeightStuck: calc(var(--headerRowHeightStuck) + var(--headerPaddingYStuck) * 2);
 

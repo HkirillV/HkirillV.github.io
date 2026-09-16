@@ -30,9 +30,8 @@
 }
 
 .inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: var(--space6);
+  display: flex;
+  gap: 30px;
   align-items: center;
   height: var(--headerRowHeight);
   transition: height var(--durationFast) ease;
@@ -45,7 +44,7 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  justify-self: start;
+  margin-right: auto;
   text-decoration: none;
 }
 
@@ -65,15 +64,7 @@
   }
 }
 
-.switcherSlot {
-  justify-self: end;
-}
-
 @media (--to-xl) {
-  .inner {
-    display: flex;
-  }
-
   .switcherSlot {
     margin-left: auto;
   }
