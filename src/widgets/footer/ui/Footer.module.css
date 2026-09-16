@@ -6,8 +6,13 @@
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: var(--space7);
-  align-items: center;
   padding: var(--space8) var(--space7);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .title {
@@ -26,15 +31,15 @@
 
 .side {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: var(--space4);
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .copyright {
-  margin-top: var(--space5);
   color: var(--colorInkMuted);
   font-size: var(--textCaption);
-  text-align: center;
 }
 
 @media (--to-lg) {
@@ -45,6 +50,6 @@
   }
 
   .side {
-    justify-content: flex-start;
+    align-items: flex-start;
   }
 }

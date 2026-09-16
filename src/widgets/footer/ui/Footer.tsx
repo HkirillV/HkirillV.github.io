@@ -14,7 +14,7 @@ export function Footer() {
       <Container>
         <Reveal>
           <Card className={styles.inner}>
-            <div>
+            <div className={styles.main}>
               <h2 id={TITLE_ID} className={styles.title}>
                 Do you want to ask
                 <br />
@@ -25,13 +25,13 @@ export function Footer() {
 
             <div className={styles.side}>
               <SocialLinks />
+
+              <p className={styles.copyright}>
+                © {FULL_NAME}, {SITE.copyrightYear}
+              </p>
             </div>
           </Card>
         </Reveal>
-
-        <p className={styles.copyright}>
-          © {FULL_NAME}, {SITE.copyrightYear}
-        </p>
       </Container>
     </footer>
   )

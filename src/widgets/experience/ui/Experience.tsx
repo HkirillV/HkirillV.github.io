@@ -1,5 +1,4 @@
-import { EXPERIENCE, ExperienceCard, totalExperienceMonths } from '@/entities/experience'
-import { formatDuration } from '@/shared/lib'
+import { EXPERIENCE, ExperienceCard } from '@/entities/experience'
 import { Accent, Reveal, Section } from '@/shared/ui'
 
 import styles from './Experience.module.css'
@@ -10,7 +9,6 @@ export function Experience() {
   return (
     <Section
       id="work-experience"
-      eyebrow={`${formatDuration(totalExperienceMonths())} in total`}
       title={
         <>
           Work <Accent>Experience</Accent>
