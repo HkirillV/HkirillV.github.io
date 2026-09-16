@@ -43,25 +43,22 @@
   --sizeControl: 44px;
 
   --headerRowHeight: 64px;
-  --headerRowHeightStuck: 52px;
   --headerPaddingY: 24px;
   --headerPaddingYStuck: 12px;
   --headerHeight: calc(var(--headerRowHeight) + var(--headerPaddingY) * 2);
   --headerHeightStuck: calc(var(--headerRowHeightStuck) + var(--headerPaddingYStuck) * 2);
 
-  --logoSize: 56px;
-  --logoSizeStuck: 40px;
+  --logoSize: 64px;
 
-  --switcherWidth: 72px;
-  --switcherHeight: 36px;
-  --switcherWidthStuck: 60px;
-  --switcherHeightStuck: 30px;
+  --switcherWidth: 92px;
+  --switcherHeight: 48px;
 
   --easeOut: cubic-bezier(0.16, 1, 0.3, 1);
 
   --durationQuick: 0.12s;
   --durationSwitch: 0.2s;
   --durationFast: 0.25s;
+  --durationHeader: 0.2s;
   --durationMenu: 0.3s;
   --durationBurger: 0.6s;
   --easeBurger: cubic-bezier(0.4, 0, 0.2, 1);
@@ -85,7 +82,7 @@
   --colorAccentAlt: #4ed8de;
   --colorOnAccent: #0e0d12;
 
-  --shadowHeader: 0 4px 14px rgb(0 0 0 / 26%);
+  --shadowHeader: -4px -4px 12px rgb(255 255 255 / 5%), 4px 4px 12px rgb(0 0 0 / 55%);
 
   --colorSwitcherTrack: #191820;
   --colorSwitcherThumb: #fff;
@@ -112,7 +109,7 @@
   --colorAccentAlt: #128f98;
   --colorOnAccent: #fff;
 
-  --shadowHeader: 0 4px 14px rgb(31 29 56 / 6%);
+  --shadowHeader: -8px -8px 12px rgb(255 255 255 / 80%), 8px 8px 12px rgb(0 0 0 / 5%);
   --colorSwitcherTrack: #ececec;
   --colorSwitcherThumb: #fff;
   --colorSwitcherIcon: #191820;

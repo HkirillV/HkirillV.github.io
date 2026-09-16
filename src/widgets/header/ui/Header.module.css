@@ -8,21 +8,15 @@
   background-color: transparent;
   box-shadow: 0 1px 0 transparent;
   transition:
-    padding-block var(--durationFast) ease,
-    box-shadow var(--durationFast) ease,
-    background-color var(--durationFast) ease;
+    padding-block var(--durationHeader) ease,
+    box-shadow var(--durationHeader) ease,
+    background-color var(--durationHeader) ease;
 }
 
 .stuck {
-  --logoSize: var(--logoSizeStuck);
-  --switcherWidth: var(--switcherWidthStuck);
-  --switcherHeight: var(--switcherHeightStuck);
-
   padding-block: var(--headerPaddingYStuck);
   background-color: var(--colorBg);
-  box-shadow:
-    0 1px 0 var(--colorLine),
-    var(--shadowHeader);
+  box-shadow: var(--shadowHeader);
 }
 
 .spacer {
@@ -35,11 +29,6 @@
   gap: 30px;
   align-items: center;
   height: var(--headerRowHeight);
-  transition: height var(--durationFast) ease;
-}
-
-.stuck .inner {
-  height: var(--headerRowHeightStuck);
 }
 
 .logo {
