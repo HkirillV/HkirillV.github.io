@@ -17,6 +17,4 @@ export {
   MoonIcon,
   SunIcon,
   TelegramIcon,
-  ZoomInIcon,
-  ZoomOutIcon,
 } from './icons/icons'

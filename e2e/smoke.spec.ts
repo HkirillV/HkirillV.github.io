@@ -68,39 +68,13 @@ test.describe('home page', () => {
     const dialog = page.getByRole('dialog')
 
     await expect(dialog).toBeVisible()
-    await expect(page.getByRole('button', { name: 'Zoom in' })).toBeFocused()
+    await expect(page.getByRole('button', { name: 'Close' })).toBeFocused()
 
     await page.keyboard.press('Tab')
     await expect(page.getByRole('button', { name: 'Close' })).toBeFocused()
 
-    await page.keyboard.press('Tab')
-    await expect(page.getByRole('button', { name: 'Zoom in' })).toBeFocused()
-
     await page.keyboard.press('Escape')
     await expect(dialog).toBeHidden()
-  })
-
-  test('keeps the zoomed screenshot undistorted and reachable by keyboard', async ({ page }) => {
-    await page
-      .getByRole('button', { name: /open full-size screenshot/i })
-      .first()
-      .click()
-    await page.getByRole('button', { name: 'Zoom in' }).click()
-
-    const image = page.locator('[role="dialog"] img')
-    const box = await image.boundingBox()
-    const natural = await image.evaluate((node: HTMLImageElement) => ({
-      width: node.naturalWidth,
-      height: node.naturalHeight,
-    }))
-
-    expect(box).not.toBeNull()
-    expect(box!.width / box!.height).toBeCloseTo(natural.width / natural.height, 2)
-
-    await page.keyboard.press('Tab')
-    await page.keyboard.press('Tab')
-
-    await expect(page.getByRole('group', { name: /scrollable/i })).toBeFocused()
   })
 
   test('gives every navigation target a heading of its own', async ({ page }) => {

@@ -65,21 +65,3 @@ export function CloseIcon(props: IconProps) {
     </svg>
   )
 }
-
-export function ZoomInIcon(props: IconProps) {
-  return (
-    <svg {...base} {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <circle cx="10.5" cy="10.5" r="7" />
-      <path d="M21 21l-5.2-5.2M10.5 7.5v6M7.5 10.5h6" strokeLinecap="round" />
-    </svg>
-  )
-}
-
-export function ZoomOutIcon(props: IconProps) {
-  return (
-    <svg {...base} {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <circle cx="10.5" cy="10.5" r="7" />
-      <path d="M21 21l-5.2-5.2M7.5 10.5h6" strokeLinecap="round" />
-    </svg>
-  )
-}

@@ -71,20 +71,6 @@
   height: auto;
 }
 
-.zoomed {
-  width: min(1100px, 90vw);
-  height: min(720px, 85vh);
-  overflow: auto;
-  cursor: default;
-}
-
-.zoomed .image {
-  width: auto;
-  max-width: none;
-  height: auto;
-  max-height: none;
-}
-
 @keyframes fade-in {
   from {
     opacity: 0;
