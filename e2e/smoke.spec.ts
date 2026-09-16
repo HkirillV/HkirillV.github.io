@@ -30,11 +30,11 @@ test.describe('home page', () => {
     await expect(page.locator('#work-experience article')).toHaveCount(4)
   })
 
-  test('follows the operating system colour scheme until a choice is made', async ({ page }) => {
+  test('opens in the dark theme whatever the system prefers', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'light' })
     await page.goto('/')
 
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   })
 
   test('remembers the chosen theme across a reload', async ({ page }) => {

@@ -89,6 +89,7 @@
 
   --colorSwitcherTrack: #191820;
   --colorSwitcherThumb: #fff;
+  --colorSwitcherIcon: #191820;
   --shadowSwitcher: -4px -4px 12px rgb(255 255 255 / 5%), 4px 4px 12px rgb(0 0 0 / 100%);
   --shadowControl: 0 6px 16px rgb(0 0 0 / 34%);
   --shadowControlHover: 0 8px 20px rgb(0 0 0 / 44%);
@@ -113,7 +114,8 @@
 
   --shadowHeader: 0 4px 14px rgb(31 29 56 / 6%);
   --colorSwitcherTrack: #ececec;
-  --colorSwitcherThumb: #191820;
+  --colorSwitcherThumb: #fff;
+  --colorSwitcherIcon: #191820;
   --shadowSwitcher: -8px -8px 12px rgb(255 255 255 / 80%), 8px 8px 12px rgb(0 0 0 / 5%);
   --shadowControl: 0 6px 16px rgb(31 29 56 / 10%);
   --shadowControlHover: 0 8px 20px rgb(31 29 56 / 14%);
