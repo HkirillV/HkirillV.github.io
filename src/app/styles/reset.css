@@ -8,7 +8,7 @@ html {
   -webkit-text-size-adjust: 100%;
   scrollbar-gutter: stable;
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--headerHeight) + var(--space5));
+  scroll-padding-top: calc(var(--headerHeightStuck) + var(--space5));
   overflow-anchor: none;
 }
 

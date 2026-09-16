@@ -81,6 +81,8 @@ export function Header() {
         </Container>
       </header>
 
+      <div className={styles.spacer} aria-hidden="true" />
+
       <MobileMenu ref={menuRef} id={MOBILE_MENU_ID} isOpen={isMenuOpen} onSelect={selectFromMenu} />
     </>
   )

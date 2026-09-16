@@ -47,6 +47,7 @@
   --headerPaddingY: 24px;
   --headerPaddingYStuck: 10px;
   --headerHeight: calc(var(--headerRowHeight) + var(--headerPaddingY) * 2);
+  --headerHeightStuck: calc(var(--headerRowHeightStuck) + var(--headerPaddingYStuck) * 2);
 
   --logoSize: 56px;
   --logoSizeStuck: 40px;
