@@ -75,7 +75,7 @@
       :root.is-loaded .preloader {
         visibility: hidden;
         pointer-events: none;
-        transition: visibility 0s 1.05s;
+        transition: visibility 0s 0.85s;
       }
       @media (prefers-reduced-motion: reduce) {
         .preloader {
@@ -100,7 +100,7 @@
       ;(function () {
         var MIN_VISIBLE = 380
         var MAX_WAIT = 1800
-        var SWEEP = 1100
+        var SWEEP = 880
 
         var root = document.documentElement
         var openedAt = Date.now()
