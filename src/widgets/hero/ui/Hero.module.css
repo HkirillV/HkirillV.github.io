@@ -23,3 +23,9 @@
     gap: var(--space6);
   }
 }
+
+@media (--to-md) {
+  .hero {
+    padding-block: var(--space6) var(--space7);
+  }
+}

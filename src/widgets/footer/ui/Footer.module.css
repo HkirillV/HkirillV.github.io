@@ -43,6 +43,10 @@
 }
 
 @media (--to-lg) {
+  .footer {
+    padding-bottom: var(--space6);
+  }
+
   .inner {
     grid-template-columns: 1fr;
     gap: var(--space6);

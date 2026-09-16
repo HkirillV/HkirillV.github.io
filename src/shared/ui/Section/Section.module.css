@@ -41,6 +41,10 @@
 
 @media (--to-md) {
   .section {
-    padding-block: var(--space8);
+    padding-block: var(--space6);
+  }
+
+  .header {
+    margin-bottom: var(--space5);
   }
 }
