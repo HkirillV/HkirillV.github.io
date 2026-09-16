@@ -34,7 +34,7 @@
   transition:
     width var(--durationFast) ease,
     height var(--durationFast) ease,
-    transform var(--durationSwitch) ease;
+    transform var(--durationFast) ease;
 }
 
 .thumbLight {
@@ -49,6 +49,8 @@
   color: var(--colorInk);
   transition:
     top var(--durationFast) ease,
+    left var(--durationFast) ease,
+    right var(--durationFast) ease,
     color var(--durationSwitch) ease;
 }
 
