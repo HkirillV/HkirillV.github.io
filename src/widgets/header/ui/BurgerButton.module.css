@@ -1,11 +1,11 @@
 .burger {
   display: none;
   place-items: center;
-  width: var(--sizeControl);
-  height: var(--sizeControl);
+  width: 36px;
+  height: 36px;
   background-color: var(--colorCard);
   border: 1px solid var(--colorAccent);
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .icon {
