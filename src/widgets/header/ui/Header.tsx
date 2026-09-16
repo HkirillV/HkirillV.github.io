@@ -59,7 +59,7 @@ export function Header() {
 
   return (
     <>
-      <header className={cn(styles.header, isStuck && styles.stuck)}>
+      <header className={cn(styles.header, isStuck && styles.stuck, isMenuOpen && styles.menuOpen)}>
         <Container>
           <div className={styles.inner}>
             <a className={styles.logo} href={`#${HOME_ID}`}>

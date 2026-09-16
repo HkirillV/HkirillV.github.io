@@ -72,3 +72,21 @@
     margin-left: auto;
   }
 }
+
+.menuOpen {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.menuOpen .logo,
+.menuOpen .switcherSlot {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.logo,
+.switcherSlot {
+  transition:
+    opacity var(--durationMenu) var(--easeOut),
+    visibility 0s;
+}
