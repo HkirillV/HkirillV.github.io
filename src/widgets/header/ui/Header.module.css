@@ -6,6 +6,8 @@
   z-index: 60;
   padding-block: var(--headerPaddingY);
   background-color: transparent;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   box-shadow: 0 1px 0 transparent;
   transition:
     padding-block var(--durationHeader) ease,

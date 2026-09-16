@@ -6,6 +6,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  overscroll-behavior-y: none;
   scrollbar-gutter: stable;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--headerHeightStuck) + var(--space5));
