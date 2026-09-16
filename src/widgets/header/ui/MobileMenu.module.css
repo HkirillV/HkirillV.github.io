@@ -42,6 +42,13 @@
   font-size: var(--textLg);
   text-align: center;
   text-decoration: none;
+  transition: color var(--durationFast) ease;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    color: var(--colorAccent);
+  }
 }
 
 @media (--to-xl) {
