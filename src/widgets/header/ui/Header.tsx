@@ -58,28 +58,30 @@ export function Header() {
   useFocusOnHash(NAV_IDS)
 
   return (
-    <header className={cn(styles.header, isStuck && styles.stuck)}>
-      <Container>
-        <div className={styles.inner}>
-          <a className={styles.logo} href={`#${HOME_ID}`}>
-            <Logo className={styles.logoMark} />
-            <VisuallyHidden>{FULL_NAME} — back to top</VisuallyHidden>
-          </a>
+    <>
+      <header className={cn(styles.header, isStuck && styles.stuck)}>
+        <Container>
+          <div className={styles.inner}>
+            <a className={styles.logo} href={`#${HOME_ID}`}>
+              <Logo className={styles.logoMark} />
+              <VisuallyHidden>{FULL_NAME} — back to top</VisuallyHidden>
+            </a>
 
-          <NavLinks activeId={activeId} onSelect={selectSection} />
+            <NavLinks activeId={activeId} onSelect={selectSection} />
 
-          <ThemeSwitcher className={styles.switcherSlot} />
+            <ThemeSwitcher className={styles.switcherSlot} />
 
-          <BurgerButton
-            ref={burgerRef}
-            isOpen={isMenuOpen}
-            controls={MOBILE_MENU_ID}
-            onToggle={toggleMenu}
-          />
-        </div>
-      </Container>
+            <BurgerButton
+              ref={burgerRef}
+              isOpen={isMenuOpen}
+              controls={MOBILE_MENU_ID}
+              onToggle={toggleMenu}
+            />
+          </div>
+        </Container>
+      </header>
 
       <MobileMenu ref={menuRef} id={MOBILE_MENU_ID} isOpen={isMenuOpen} onSelect={selectFromMenu} />
-    </header>
+    </>
   )
 }

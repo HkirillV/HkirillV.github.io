@@ -16,8 +16,8 @@
   background-color: var(--colorInk);
   border-radius: 2px;
   transition:
-    transform var(--durationFast) ease,
-    background-color var(--durationFast) ease;
+    transform var(--durationMenu) var(--easeOut),
+    background-color var(--durationMenu) var(--easeOut);
 }
 
 .line {
