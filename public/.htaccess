@@ -25,8 +25,10 @@ Options -Indexes
   </FilesMatch>
 </IfModule>
 
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+<IfModule mod_filter.c>
+  <IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+  </IfModule>
 </IfModule>
 
 <IfModule mod_mime.c>
