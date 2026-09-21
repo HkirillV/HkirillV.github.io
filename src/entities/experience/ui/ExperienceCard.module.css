@@ -32,8 +32,13 @@
 }
 
 .link {
-  text-decoration: none;
-  transition: color var(--durationHover) ease-in-out;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentcolor 35%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition:
+    color var(--durationHover) ease-in-out,
+    text-decoration-color var(--durationHover) ease-in-out;
 }
 
 .position {
@@ -51,5 +56,6 @@
 @media (hover: hover) {
   .link:hover {
     color: var(--colorAccent);
+    text-decoration-color: currentcolor;
   }
 }
