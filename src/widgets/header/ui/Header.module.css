@@ -1,28 +1,18 @@
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  right: 0;
-  left: 0;
   z-index: 60;
   padding-block: var(--headerPaddingY);
   background-color: transparent;
-  transform: translateZ(0);
-  backface-visibility: hidden;
   box-shadow: 0 1px 0 transparent;
   transition:
-    padding-block var(--durationHeader) ease,
     box-shadow var(--durationHeader) ease,
     background-color var(--durationHeader) ease;
 }
 
 .stuck {
-  padding-block: var(--headerPaddingYStuck);
   background-color: var(--colorBg);
   box-shadow: var(--shadowHeader);
-}
-
-.spacer {
-  height: var(--headerHeight);
 }
 
 .inner {

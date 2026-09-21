@@ -9,7 +9,7 @@ html {
   overscroll-behavior-y: none;
   scrollbar-gutter: stable;
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--headerHeightStuck) + var(--space5));
+  scroll-padding-top: calc(var(--headerHeight) + var(--space5));
   overflow-anchor: none;
 }
 
