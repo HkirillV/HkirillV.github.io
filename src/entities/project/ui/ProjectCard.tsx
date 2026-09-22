@@ -1,4 +1,4 @@
-import { EXTERNAL_LINK_PROPS, formatMonth } from '@/shared/lib'
+import { EXTERNAL_LINK_PROPS } from '@/shared/lib'
 import { Card, TechList } from '@/shared/ui'
 
 import type { Project } from '../model/projects'
@@ -11,9 +11,6 @@ export function ProjectCard({ project }: { project: Project }) {
     <Card as="article" className={styles.card}>
       <ProjectPreview id={project.id} title={project.title} />
       <div className={styles.body}>
-        <time className={styles.date} dateTime={project.releasedAt}>
-          {formatMonth(project.releasedAt)}
-        </time>
         <h3 className={styles.title}>
           <a
             className={styles.link}

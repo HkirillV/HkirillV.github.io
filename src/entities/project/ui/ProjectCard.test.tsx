@@ -20,14 +20,6 @@ describe('ProjectCard', () => {
     expect(link).toHaveAttribute('rel', expect.stringContaining('noopener'))
   })
 
-  it('formats the release date and exposes it as a machine-readable time', () => {
-    render(<ProjectCard project={project} />)
-
-    const time = screen.getByText('June 2025')
-
-    expect(time).toHaveAttribute('datetime', '2025-06')
-  })
-
   it('labels the stack list and names every technology for screen readers', () => {
     render(<ProjectCard project={project} />)
 

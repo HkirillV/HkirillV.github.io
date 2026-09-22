@@ -14,14 +14,6 @@
   padding: var(--space5);
 }
 
-.date {
-  color: var(--colorInkMuted);
-  font-size: var(--textLabel);
-  font-family: var(--fontMono);
-  letter-spacing: var(--trackingLabel);
-  text-transform: uppercase;
-}
-
 .title {
   font-weight: var(--weightLight);
   font-size: var(--textMd);
