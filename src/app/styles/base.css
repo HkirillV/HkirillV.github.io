@@ -1,7 +1,6 @@
 body {
   min-height: 100svh;
   margin: 0;
-  overflow-x: clip;
   color: var(--colorInk);
   font-family: var(--fontSans);
   font-weight: var(--weightLight);
