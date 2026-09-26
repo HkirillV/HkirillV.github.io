@@ -21,12 +21,11 @@
 
 .soft::before {
   flex: none;
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   margin-top: 8px;
   background-color: var(--colorAccent);
-  border-radius: 2px;
-  rotate: 45deg;
+  border-radius: 50%;
   content: '';
 }
 
