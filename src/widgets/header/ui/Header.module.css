@@ -3,26 +3,13 @@
   top: 0;
   z-index: 60;
   padding-block: var(--headerPaddingY);
-  background-color: transparent;
+  background-color: var(--colorBg);
   box-shadow: 0 1px 0 transparent;
-  transition:
-    box-shadow var(--durationHeader) ease,
-    background-color var(--durationHeader) ease;
+  transition: box-shadow var(--durationHeader) ease;
 }
 
 .stuck {
-  background-color: var(--colorBg);
   box-shadow: var(--shadowHeader);
-}
-
-.stuck::before {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: var(--colorBg);
-  content: '';
 }
 
 .inner {
