@@ -1,6 +1,6 @@
 # khlebov.dev
 
-Personal site of Kirill Khlebov — frontend developer at Sber, AI Center.
+Personal site of Kirill Khlebov — frontend developer.
 
 React 19 · TypeScript · Vite · CSS Modules · Feature-Sliced Design · prerendered to static HTML.
 
